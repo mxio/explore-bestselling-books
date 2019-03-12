@@ -151,6 +151,10 @@ blockquote {
     width: 100%;
 }
 
+.quotes {
+    cursor: pointer;
+}
+
 .button {
     background-color: gray;
     box-sizing: border-box;
