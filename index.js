@@ -92,6 +92,28 @@ function formatFictionString(paramsFiction) {
     return fictionItems;
 }
 
+function determineDate() {
+    const dateSelected = $('input').val();
+    console.log(dateSelected);
+
+    if (dateSelected === "Current week") {
+        let currentDate = "current";
+        return currentDate;
+    } 
+    // else if (dateSelected.val() === "Last month") {
+
+    // }
+    // else if (dateSelected.val() === "3 months ago") {
+
+    // }
+    // else {
+
+    // }
+    
+    // currentDate = ;
+    // dateSelected = currentDate - inputOfDate
+}
+
 //fetch bestsellers list data from New York Times API
 function getBestSellers(key) {
     
@@ -99,7 +121,7 @@ function getBestSellers(key) {
     const paramsFiction = {
         api_key: apiKey,
         list: "combined-print-and-e-book-fiction",
-        date: "current"
+        date: determineDate()
     };
 
     //format url strings
