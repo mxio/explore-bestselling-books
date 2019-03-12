@@ -155,6 +155,11 @@ blockquote {
     cursor: pointer;
 }
 
+.quotes:hover, .buy:hover {
+    background-color: lightgray;
+    color: black;
+}
+
 .button {
     background-color: gray;
     box-sizing: border-box;
