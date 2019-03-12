@@ -21,7 +21,7 @@ function closeModal() {
 }
 
 //display quotes
-function displayQuotes(quotesJson, bookAuthor) {
+function displayQuotes(quotesJson, bookAuthor, bookTitle) {
     
     const bookQuotes = quotesJson.quotes;
     console.log(bookAuthor);
@@ -60,7 +60,7 @@ function getQuotes(id) {
                 }
                 throw new Error(response.statusText);
             })
-            .then(quotesJson => displayQuotes(quotesJson, bookAuthor))
+            .then(quotesJson => displayQuotes(quotesJson, bookAuthor, bookTitle))
             .catch(error => $('#modal-content').append(`<p>We do not have quotes for this book yet.</p>`));
         }
     }
@@ -121,8 +121,6 @@ function getBestSellers(key) {
 
 function handler() {
     $(document).ready(function() {
-        openModal();
-        closeModal();
         getBestSellers(apiKey);
     })
 }
