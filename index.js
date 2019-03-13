@@ -9,14 +9,13 @@ function openModal(responseBooks) {
         $('.modal').toggleClass('hidden');
         getQuotes(modalID);
     })
-    //closeModal();
 }
 
 function closeModal() {
     $('#close-modal').click(function() {
         $('#modal-content').empty();
-        $('.modal').toggleClass('hidden');
-        $('.overlay').toggleClass('hidden');
+        $('.modal').addClass('hidden');
+        $('.overlay').addClass('hidden');
     })
 }
 
@@ -38,6 +37,7 @@ function displayQuotes(quotesJson, bookAuthor) {
             quotesCount++;
         }
     }
+
     if (quotesCount === 0) {
         closeModal();
         return $('#modal-content').append(`<p>We do not have quotes for this book yet.</p>`);
@@ -162,8 +162,6 @@ function getBestSellers(key) {
 
 function handler() {
     $(document).ready(function() {
-        //openModal();
-        //closeModal();
         getBestSellers(apiKey);
         viewOlderLists(apiKey);
     })
