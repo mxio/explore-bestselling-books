@@ -9,22 +9,22 @@ function openModal(responseBooks) {
         $('.modal').toggleClass('hidden');
         getQuotes(modalID);
     })
-    closeModal();
+    //closeModal();
 }
 
 function closeModal() {
     $('#close-modal').click(function() {
+        $('#modal-content').empty();
         $('.modal').toggleClass('hidden');
         $('.overlay').toggleClass('hidden');
-        $('#modal-content').empty();
     })
 }
 
 //display quotes
-function displayQuotes(quotesJson, bookAuthor, bookTitle) {
+function displayQuotes(quotesJson, bookAuthor) {
     
     const bookQuotes = quotesJson.quotes;
-    console.log(bookAuthor);
+    
     for (let i = 0; i < bookQuotes.length; i++) {
         if (bookQuotes[i].author === bookAuthor) {
             $('#modal-content').append(
@@ -36,6 +36,8 @@ function displayQuotes(quotesJson, bookAuthor, bookTitle) {
         }
         else return $('#modal-content').append(`<p>We do not have quotes for this book yet.</p>`);
     }
+
+    closeModal();
 }
 
 function getQuotes(id) {
@@ -60,7 +62,7 @@ function getQuotes(id) {
                 }
                 throw new Error(response.statusText);
             })
-            .then(quotesJson => displayQuotes(quotesJson, bookAuthor, bookTitle))
+            .then(quotesJson => displayQuotes(quotesJson, bookAuthor))
             .catch(error => $('#modal-content').append(`<p>We do not have quotes for this book yet.</p>`));
         }
     }
@@ -93,25 +95,36 @@ function formatFictionString(paramsFiction) {
 }
 
 function determineDate() {
-    const dateSelected = $('input').val();
-    console.log(dateSelected);
+    let dateSelected = $('input[name=date-selector]:checked').val();
+    let dateString = new Date();
 
     if (dateSelected === "Current week") {
-        let currentDate = "current";
-        return currentDate;
+        dateString = "current";
+        return dateString;
     } 
-    // else if (dateSelected.val() === "Last month") {
-
-    // }
-    // else if (dateSelected.val() === "3 months ago") {
-
-    // }
-    // else {
-
-    // }
+    else if (dateSelected === "Last month") {
+        dateString = dateString.setDate(dateString.getDate() - 30);
+        dateString = new Date(dateString).toISOString().split("T")[0];
+        return dateString;
+    }
+    else if (dateSelected === "3 months ago") {
+        dateString= dateString.setDate(dateString.getDate() - 90);
+        dateString = new Date(dateString).toISOString().split("T")[0];
+        return dateString;        
+    }
+    else {
+        dateString = dateString.setDate(dateString.getDate() - 364);
+        dateString = new Date(dateString).toISOString().split("T")[0];
+        return dateString;
+    }
     
-    // currentDate = ;
-    // dateSelected = currentDate - inputOfDate
+}
+
+function viewOlderLists(key) {
+    $('form').submit(event => {
+        event.preventDefault();
+        getBestSellers(apiKey);
+    })
 }
 
 //fetch bestsellers list data from New York Times API
@@ -143,7 +156,10 @@ function getBestSellers(key) {
 
 function handler() {
     $(document).ready(function() {
+        //openModal();
+        //closeModal();
         getBestSellers(apiKey);
+        viewOlderLists(apiKey);
     })
 }
 
