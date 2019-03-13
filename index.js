@@ -36,7 +36,6 @@ function displayQuotes(quotesJson, bookAuthor) {
                 </blockquote>`
             )
             quotesCount++;
-            closeModal();
         }
     }
     if (quotesCount === 0) {
