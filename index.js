@@ -24,8 +24,10 @@ function closeModal() {
 function displayQuotes(quotesJson, bookAuthor) {
     
     const bookQuotes = quotesJson.quotes;
-    
+    let quotesCount  = 0;
+
     for (let i = 0; i < bookQuotes.length; i++) {
+        console.log(bookQuotes[i])
         if (bookQuotes[i].author === bookAuthor) {
             $('#modal-content').append(
                 `<blockquote>
@@ -33,8 +35,13 @@ function displayQuotes(quotesJson, bookAuthor) {
                     <footer>- ${bookQuotes[i].author}, from "${bookQuotes[i].publication}"</footer>
                 </blockquote>`
             )
+            quotesCount++;
+            closeModal();
         }
-        else return $('#modal-content').append(`<p>We do not have quotes for this book yet.</p>`);
+    }
+    if (quotesCount === 0) {
+        closeModal();
+        return $('#modal-content').append(`<p>We do not have quotes for this book yet.</p>`);
     }
 
     closeModal();
