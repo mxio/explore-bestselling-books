@@ -69,7 +69,7 @@
 @media only screen and (min-width: 1024px) {
     article {
         width: 184px;
-        margin: 5vh 1vw;
+        margin: 5vh auto;
         height: 400px;
     }
 
@@ -83,7 +83,7 @@
     article {
         display: flex;
         flex-direction: column;
-        margin: 5vh 1vw;
+        margin: 5vh auto;
         width: 200px;
         height: 420px;
     }
