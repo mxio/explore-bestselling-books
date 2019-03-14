@@ -24,19 +24,20 @@ function displayQuotes(quotesJson, bookAuthor) {
     
     const bookQuotes = quotesJson.quotes;
     let quotesCount  = 0;
+    let quotesString = "";
 
     for (let i = 0; i < bookQuotes.length; i++) {
         if (bookQuotes[i].author === bookAuthor) {
-            $('#modal-content').append(
+            quotesString += 
                 `<blockquote>
                     ${bookQuotes[i].quote}
                     <footer>- ${bookQuotes[i].author}, from "${bookQuotes[i].publication}"</footer>
-                </blockquote>`
-            )
+                </blockquote>`;
             quotesCount++;
         }
     }
-
+    $('#modal-content').append(quotesString);
+    
     if (quotesCount === 0) {
         closeModal();
         return $('#modal-content').append(`<p>We do not have quotes for this book yet.</p>`);
