@@ -26,7 +26,6 @@ function displayQuotes(quotesJson, bookAuthor) {
     let quotesCount  = 0;
 
     for (let i = 0; i < bookQuotes.length; i++) {
-        console.log(bookQuotes[i])
         if (bookQuotes[i].author === bookAuthor) {
             $('#modal-content').append(
                 `<blockquote>
@@ -79,19 +78,20 @@ function displayBestSellers(responseJson) {
     $('section').empty();
 
     const responseBooks = responseJson.results.books;
+    let bestSellersString = "";
 
     for (let i = 0; i <responseBooks.length; i++) {
-        $('section').append(
+        bestSellersString +=
             `<article id="${i}">
                 <img src="${responseBooks[i].book_image}">
                 <h4>${responseBooks[i].title}</h4>
                 <h5>${responseBooks[i].author}</h5>
                 <a class="button quotes">Quotes</a>
                 <a class="button buy" href="${responseBooks[i].amazon_product_url}" target="_blank">Buy</a>
-            </article>`
-        )
+            </article>`;
     }
 
+    $('section').append(bestSellersString);
     openModal();
 }
 
