@@ -2,7 +2,7 @@
 
 const apiKey = '6Wzcjab7S4IeGCA4OB2zY0JPxfU3PwZq';
 
-function openModal(responseBooks) {
+function enableModal() {
     $('.quotes').click(function() {
         let modalID = $(this).parent().attr('id'); 
         $('.overlay').toggleClass('hidden');
@@ -93,7 +93,8 @@ function displayBestSellers(responseJson) {
     }
 
     $('section').append(bestSellersString);
-    openModal();
+    
+    enableModal();
 }
 
 function formatFictionString(paramsFiction) {
@@ -120,7 +121,7 @@ function determineDate() {
         return dateString;        
     }
     else {
-        dateString = dateString.setDate(dateString.getDate() - 364);
+        dateString = dateString.setDate(dateString.getDate() - 365);
         dateString = new Date(dateString).toISOString().split("T")[0];
         return dateString;
     }
@@ -158,14 +159,12 @@ function getBestSellers(key) {
             throw new Error(response.statusText);
         })
         .then(responseJson => displayBestSellers(responseJson))
-        .catch(error => alert(error.message));
+        .catch(error => $('section').append(error.message));
 }
 
 function handler() {
-    $(document).ready(function() {
-        getBestSellers(apiKey);
-        viewOlderLists(apiKey);
-    })
+    getBestSellers(apiKey);
+    viewOlderLists(apiKey);
 }
 
-$(handler);
+handler();
