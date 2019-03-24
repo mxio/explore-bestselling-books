@@ -88,8 +88,8 @@ section {
 }
 
 article {
-    margin: 5vh auto;
-    width: 80%;
+    margin: 5vh 0;
+    width: 100%;
     position: relative;
 }
 

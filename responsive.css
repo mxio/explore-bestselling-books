@@ -4,12 +4,13 @@
         flex-flow: row;
         justify-content: flex-start;
         flex-wrap: wrap;
+        margin: 5vw -1vw;
     }
 
     article {
         display: flex;
         flex-direction: column;
-        margin: 5vw auto;
+        margin: 5vw 1vw;
         width: 164px;
         height: 375px;
     }
@@ -68,9 +69,13 @@
 }
 
 @media only screen and (min-width: 1024px) {
+    section {
+        margin: 5vh -1vw;
+    }
+    
     article {
         width: 184px;
-        margin: 5vh auto;
+        margin: 5vh 1vw;
         height: 400px;
     }
 
@@ -81,10 +86,14 @@
 }
 
 @media only screen and (min-width: 1440px) {
+    section {
+        margin: 5vh -1vw;
+    }
+
     article {
         display: flex;
         flex-direction: column;
-        margin: 5vh auto;
+        margin: 5vh 1vw;
         width: 200px;
         height: 420px;
     }
