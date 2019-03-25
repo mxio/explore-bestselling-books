@@ -96,7 +96,6 @@ h5 {
     line-height: 1.15em;
 }
 
-
 section {
     margin: 5vh 0;
     z-index: 1;
@@ -154,6 +153,7 @@ article img {
 
 blockquote {
     margin: 25px 0;
+    line-height: 1.25em;
 }
 
 blockquote, #close-modal {
