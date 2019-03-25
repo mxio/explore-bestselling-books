@@ -2,9 +2,9 @@
 
 const apiKey = '6Wzcjab7S4IeGCA4OB2zY0JPxfU3PwZq';
 
-function enableModal() {
+function enableModal(responseBooks) {
     $('.quotes').click(function() {
-        let modalID = $(this).parent().attr('id'); 
+        let modalID = $(this).parent().parent().attr('id'); 
         $('.overlay').toggleClass('hidden');
         $('.modal').toggleClass('hidden');
         getQuotes(modalID);
@@ -21,7 +21,7 @@ function closeModal() {
 
 //display quotes
 function displayQuotes(quotesJson, bookAuthor) {
-    
+
     const bookQuotes = quotesJson.quotes;
     let quotesCount  = 0;
     let quotesString = "";
@@ -54,8 +54,8 @@ function getQuotes(id) {
 
     for (let i = 0; i < articles.length; i++) {
         if (id === articles[i].id) {
-            const bookTitle = articles[i].firstElementChild.nextElementSibling.innerText.split(' ');
-            const bookAuthor = articles[i].firstElementChild.nextElementSibling.nextElementSibling.innerText;
+            const bookTitle = articles[i].firstElementChild.nextElementSibling.firstElementChild.innerText.split(' ');
+            const bookAuthor = articles[i].firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.innerText;
             const joinTitle = bookTitle.join('+');
             const quotesAppUrl = 'https://goodquotesapi.herokuapp.com/title/';
             const quotesQuery = `${quotesAppUrl}${joinTitle}`;
@@ -90,11 +90,11 @@ function displayBestSellers(responseJson) {
                     <h5>${responseBooks[i].author}</h5>
                 </div>
                 <div class="icons">
-                    <i class="fas fa-quote-left"></i>
+                    <i class="fas fa-quote-left quotes"></i>
                     <div class="divider"></div>
-                    <a class="fas fa-shopping-cart" href="${responseBooks[i].amazon_product_url}" target="_blank"></a>
+                    <a class="fas fa-shopping-cart buy" href="${responseBooks[i].amazon_product_url}" target="_blank"></a>
                 </div>
-                </article>`;
+            </article>`;
     }
 
     $('section').append(bestSellersString);
@@ -170,6 +170,8 @@ function getBestSellers(key) {
 function handler() {
     getBestSellers(apiKey);
     viewOlderLists(apiKey);
+    enableModal();
+    closeModal();
 }
 
-handler();
+$(handler);

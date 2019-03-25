@@ -76,7 +76,7 @@ h3 {
     font-size: 1.2em;
 }
 
-h1, h2. h3 {
+h1, h2, h3 {
     color: #35363a;
 }
 
@@ -94,10 +94,6 @@ h5 {
     font-family: 'Roboto', sans-serif;
     font-size: 1em;
     line-height: 1.15em;
-}
-
-input {
-    
 }
 
 section {
@@ -161,29 +157,6 @@ blockquote {
 
 .hidden {
     display: none;
-}
-
-.quotes, .buy {
-    display: block;
-    width: 100%;
-}
-
-.quotes {
-    cursor: pointer;
-}
-
-.quotes:hover, .buy:hover {
-    background-color: lightgray;
-    color: black;
-}
-
-.button {
-    background-color: gray;
-    box-sizing: border-box;
-    padding: 5px 13px;
-    border: 0;
-    text-decoration: none;
-    color: white;
 }
 
 div#modal-content {

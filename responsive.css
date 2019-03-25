@@ -20,24 +20,6 @@
         height: 272px;
     }
 
-    .quotes, .buy {
-        display: inline;
-        position: absolute;
-        bottom: 0;
-    }
-
-    .quotes {
-        width: 45%;
-        margin-right: 2.5%;
-        left: 0;
-    }
-
-    .buy {
-        width: 45%;
-        margin-left: 2.5%;
-        right: 0;
-    }
-
     .modal {
         top: 20%;
         display: flex;
@@ -108,17 +90,5 @@
     article img {
         width: 260px;
         height: 392px;
-    }
-
-    .quotes {
-        width: 45%;
-        margin-right: 2.5%;
-        left: 0;
-    }
-
-    .buy {
-        width: 45%;
-        margin-left: 2.5%;
-        right: 0;
     }
 }
