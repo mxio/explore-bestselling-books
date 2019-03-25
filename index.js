@@ -85,8 +85,10 @@ function displayBestSellers(responseJson) {
         bestSellersString +=
             `<article id="${i}">
                 <img src="${responseBooks[i].book_image}">
-                <h4>${responseBooks[i].title}</h4>
-                <h5>${responseBooks[i].author}</h5>
+                <div class="item-details">
+                    <h4>${responseBooks[i].title}</h4>
+                    <h5>${responseBooks[i].author}</h5>
+                </div>
                 <div class="icons">
                     <i class="fas fa-quote-left"></i>
                     <div class="divider"></div>
