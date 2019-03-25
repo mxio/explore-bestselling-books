@@ -96,6 +96,7 @@ h5 {
     line-height: 1.15em;
 }
 
+
 section {
     margin: 5vh 0;
     z-index: 1;
@@ -153,6 +154,11 @@ article img {
 
 blockquote {
     margin: 25px 0;
+}
+
+blockquote, #close-modal {
+    font-family: 'Roboto';
+    color: #35363a;
 }
 
 .hidden {
