@@ -143,12 +143,21 @@ article img {
     overflow-y: scroll;
 }
 
+#modal-content p {
+    font-family: 'Roboto';
+}
+
 #close-modal {
     display: flex;
     align-self: flex-end;
     margin-top: -20px;
     position: fixed;
     margin-left: 10px;
+    color: #4c79ba;
+}
+
+p#close-modal {
+    color: #4c79ba;
 }
 
 blockquote {
