@@ -65,7 +65,14 @@
     div#modal-content {
         padding: 0 30px;
     }
-    
+
+    h3 {
+        display: inline;
+    }
+
+    input#submit {
+        margin: 15px 10px;
+    }
 }
 
 @media only screen and (min-width: 1024px) {

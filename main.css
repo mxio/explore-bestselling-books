@@ -59,6 +59,7 @@ header, main {
 
 h1 {
     font-size: 2em;
+    font-family: 'Roboto Slab', serif;
 }
 
 h2 {
@@ -66,8 +67,17 @@ h2 {
     margin: .5em 0;
 }
 
+h2, h3 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
 h3 {
-    font-size: 1.25em;
+    font-size: 1.2em;
+}
+
+h1, h2. h3 {
+    color: #35363a;
 }
 
 h4 {
@@ -84,6 +94,10 @@ h5 {
     font-family: 'Roboto', sans-serif;
     font-size: 1em;
     line-height: 1.15em;
+}
+
+input {
+    
 }
 
 section {
@@ -204,11 +218,18 @@ div#modal-content {
 }
 
 input#submit {
-    background: #b4b7c8;
+    background: #4c79ba;
     border: none;
     padding: 5px 20px;
     color: white;
     text-transform: uppercase;
+    font-family: 'Roboto';
+    font-weight: 400;
+    margin: 10px 0;
+}
+
+input#submit:hover {
+    background: #cadae8;
 }
 
 article {
