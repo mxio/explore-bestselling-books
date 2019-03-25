@@ -34,7 +34,7 @@ function displayBestSellers(responseJson) {
                     <h5>${responseBooks[i].author}</h5>
                 </div>
                 <div class="icons">
-                    <a class="fas fa-newspaper" href="${responseBooks[i].book_review_link}"></a>
+                    <a class="fas fa-newspaper" href="${responseBooks[i].book_review_link}" target="_blank"></a>
                     <div class="divider"></div>
                     <a class="fas fa-shopping-cart buy" href="${responseBooks[i].amazon_product_url}" target="_blank"></a>
                 </div>
