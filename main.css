@@ -180,7 +180,7 @@ div#modal-content {
 
 .icons {
 	display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     margin-top: auto;
     background-color: #edf3f8;
     border-top: 1px solid #d1d7dc;
