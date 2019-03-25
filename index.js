@@ -2,7 +2,23 @@
 
 const apiKey = '6Wzcjab7S4IeGCA4OB2zY0JPxfU3PwZq';
 
-//display bestsellers list on load
+function openModal(responseBooks) {
+    $('.overlay').toggleClass('hidden');
+    $('.modal').toggleClass('hidden');
+
+    $('#modal-content').append(`<p>The New York Times does not have a review for this book yet.</p>`);
+
+    closeModal();
+}
+
+function closeModal() {
+    $('#close-modal').click(function() {
+        $('#modal-content').empty();
+        $('.modal').addClass('hidden');
+        $('.overlay').addClass('hidden');
+    })
+}
+
 function displayBestSellers(responseJson) {
     $('section').empty();
 
@@ -27,6 +43,10 @@ function displayBestSellers(responseJson) {
 
     $('section').append(bestSellersString);
 
+    $('a[href=""]').click(function(e) {
+        e.preventDefault();
+        openModal();
+    });
 }
 
 function formatFictionString(paramsFiction) {
@@ -97,8 +117,6 @@ function getBestSellers(key) {
 function handler() {
     getBestSellers(apiKey);
     viewOlderLists(apiKey);
-    enableModal();
-    closeModal();
 }
 
 $(handler);
