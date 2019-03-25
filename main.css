@@ -172,3 +172,23 @@ blockquote {
 div#modal-content {
     padding: 0 15px;
 }
+
+.icons {
+	display: flex;
+    justify-content: space-around;
+    margin-top: auto;
+}
+
+.icons a {
+    text-decoration: none;
+}
+
+.fa, .fas {
+    color: lightgray;
+    align-self: center;
+}
+
+.divider {
+	height: 25px;
+	border-left: 1px solid lightgray;
+}

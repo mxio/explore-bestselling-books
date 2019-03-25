@@ -87,9 +87,12 @@ function displayBestSellers(responseJson) {
                 <img src="${responseBooks[i].book_image}">
                 <h4>${responseBooks[i].title}</h4>
                 <h5>${responseBooks[i].author}</h5>
-                <a class="button quotes">Quotes</a>
-                <a class="button buy" href="${responseBooks[i].amazon_product_url}" target="_blank">Buy</a>
-            </article>`;
+                <div class="icons">
+                    <i class="fas fa-quote-left"></i>
+                    <div class="divider"></div>
+                    <a class="fas fa-shopping-cart" href="${responseBooks[i].amazon_product_url}" target="_blank"></a>
+                </div>
+                </article>`;
     }
 
     $('section').append(bestSellersString);
