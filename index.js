@@ -2,13 +2,13 @@
 
 const apiKey = '6Wzcjab7S4IeGCA4OB2zY0JPxfU3PwZq';
 
-function openModal(responseBooks) {
-    $('.overlay').toggleClass('hidden');
-    $('.modal').toggleClass('hidden');
-
-    $('#modal-content').append(`<p>The New York Times does not have a review for this book yet.</p>`);
-
-    closeModal();
+function enableModal(responseBooks) {
+    $('.quotes').click(function() {
+        let modalID = $(this).parent().parent().attr('id'); 
+        $('.overlay').toggleClass('hidden');
+        $('.modal').toggleClass('hidden');
+        getQuotes(modalID);
+    })
 }
 
 function closeModal() {
@@ -19,6 +19,62 @@ function closeModal() {
     })
 }
 
+//display quotes
+function displayQuotes(quotesJson, bookAuthor) {
+
+    const bookQuotes = quotesJson.quotes;
+    let quotesCount  = 0;
+    let quotesString = "";
+
+    for (let i = 0; i < bookQuotes.length; i++) {
+        if (bookQuotes[i].author === bookAuthor) {
+            quotesString += 
+                `<blockquote>
+                    ${bookQuotes[i].quote}
+                    <footer>- ${bookQuotes[i].author}, from "${bookQuotes[i].publication}"</footer>
+                </blockquote>`;
+            quotesCount++;
+        }
+    }
+    $('#modal-content').append(quotesString);
+    
+    if (quotesCount === 0) {
+        closeModal();
+        return $('#modal-content').append(`<p>We do not have quotes for this book yet.</p>`);
+    }
+
+    closeModal();
+}
+
+function getQuotes(id) {
+
+    //get title of responseBooks and create a url string for the quotes API
+    
+    let articles = $('article').toArray();
+
+    for (let i = 0; i < articles.length; i++) {
+        if (id === articles[i].id) {
+            const bookTitle = articles[i].firstElementChild.nextElementSibling.firstElementChild.innerText.split(' ');
+            const bookAuthor = articles[i].firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.innerText;
+            const joinTitle = bookTitle.join('+');
+            const quotesAppUrl = 'https://goodquotesapi.herokuapp.com/title/';
+            const quotesQuery = `${quotesAppUrl}${joinTitle}`;
+
+            
+            fetch(quotesQuery)
+            .then(quotesResponse => {
+                if (quotesResponse.ok) {
+                    return quotesResponse.json();
+                }
+                throw new Error(response.statusText);
+            })
+            .then(quotesJson => displayQuotes(quotesJson, bookAuthor))
+            .catch(error => $('#modal-content').append(`<p>We do not have quotes for this book yet.</p>`));
+        }
+    }
+}
+
+//display bestsellers list on load
 function displayBestSellers(responseJson) {
     $('section').empty();
 
@@ -34,7 +90,7 @@ function displayBestSellers(responseJson) {
                     <h5>${responseBooks[i].author}</h5>
                 </div>
                 <div class="icons">
-                    <a class="fas fa-newspaper" href="${responseBooks[i].book_review_link}" target="_blank"></a>
+                    <i class="fas fa-quote-left quotes"></i>
                     <div class="divider"></div>
                     <a class="fas fa-shopping-cart buy" href="${responseBooks[i].amazon_product_url}" target="_blank"></a>
                 </div>
@@ -43,10 +99,7 @@ function displayBestSellers(responseJson) {
 
     $('section').append(bestSellersString);
 
-    $('a[href=""]').click(function(e) {
-        e.preventDefault();
-        openModal();
-    });
+    enableModal();
 }
 
 function formatFictionString(paramsFiction) {
