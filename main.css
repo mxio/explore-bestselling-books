@@ -163,9 +163,10 @@ p#close-modal {
 blockquote {
     margin: 25px 0;
     line-height: 1.25em;
+    font-family: 'Roboto Slab', sans-serif;
 }
 
-blockquote, #close-modal {
+#close-modal {
     font-family: 'Roboto';
     color: #35363a;
 }
