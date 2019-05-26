@@ -39,7 +39,7 @@ function displayQuotes(quotesJson, bookAuthor) {
     $('#modal-content').append(quotesString);
     
     if (quotesCount === 0) {
-        closeModal();
+        //closeModal();
         return $('#modal-content').append(`<p>We do not have quotes for this book yet.</p>`);
     }
 
