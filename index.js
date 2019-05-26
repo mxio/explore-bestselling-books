@@ -11,13 +11,13 @@ function enableModal(responseBooks) {
     })
 }
 
-function closeModal() {
-    $('#close-modal').click(function() {
-        $('#modal-content').empty();
-        $('.modal').addClass('hidden');
-        $('.overlay').addClass('hidden');
-    })
-}
+// function closeModal() {
+//     $('#close-modal').click(function() {
+//         $('#modal-content').empty();
+//         $('.modal').addClass('hidden');
+//         $('.overlay').addClass('hidden');
+//     })
+// }
 
 //display quotes
 function displayQuotes(quotesJson, bookAuthor) {
@@ -43,7 +43,7 @@ function displayQuotes(quotesJson, bookAuthor) {
         return $('#modal-content').append(`<p>We do not have quotes for this book yet.</p>`);
     }
 
-    closeModal();
+    //closeModal();
 }
 
 function getQuotes(id) {
@@ -170,6 +170,12 @@ function getBestSellers(key) {
 function handler() {
     getBestSellers(apiKey);
     viewOlderLists(apiKey);
+
+    $('#close-modal').click(function() {
+        $('#modal-content').empty();
+        $('.modal').addClass('hidden');
+        $('.overlay').addClass('hidden');
+    })
 }
 
 $(handler);
